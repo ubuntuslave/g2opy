@@ -27,7 +27,6 @@
 #include <Eigen/StdVector>
 #include <iostream>
 #include <stdint.h>
-#include <time.h>
 
 #include <unordered_set>
 
@@ -80,8 +79,6 @@ double Sample::gaussian(double sigma){
 }
 
 int main(int argc, const char* argv[]){
-  std::srand (time(NULL));
-
   if (argc<2)
   {
     cout << endl;
