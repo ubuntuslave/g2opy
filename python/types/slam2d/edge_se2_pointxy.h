@@ -19,8 +19,8 @@ namespace g2o {
 
 void declareEdgeSE2PointXY(py::module& m) {
 
-    templatedBaseBinaryEdge<2, Vector2D, VertexSE2, VertexPointXY>(m, "_2_Vector2D_VertexSE2_VertexPointXY");
-    py::class_<EdgeSE2PointXY, BaseBinaryEdge<2, Vector2D, VertexSE2, VertexPointXY>>(m, "EdgeSE2PointXY")
+    templatedBaseBinaryEdge<2, Vector2, VertexSE2, VertexPointXY>(m, "_2_Vector2D_VertexSE2_VertexPointXY");
+    py::class_<EdgeSE2PointXY, BaseBinaryEdge<2, Vector2, VertexSE2, VertexPointXY>>(m, "EdgeSE2PointXY")
         .def(py::init<>())
         .def("compute_error", &EdgeSE2PointXY::computeError)
         .def("set_measurement_data", &EdgeSE2PointXY::setMeasurementData)
@@ -56,7 +56,7 @@ void declareEdgeSE2PointXY(py::module& m) {
 
 
 
-    py::class_<EdgeSE2PointXYCalib, BaseMultiEdge<2, Vector2D>>(m, "EdgeSE2PointXYCalib")
+    py::class_<EdgeSE2PointXYCalib, BaseMultiEdge<2, Vector2>>(m, "EdgeSE2PointXYCalib")
         .def(py::init<>())
         .def("compute_error", &EdgeSE2PointXYCalib::computeError)
         .def("initial_estimate_possible", &EdgeSE2PointXYCalib::initialEstimatePossible)
@@ -65,7 +65,7 @@ void declareEdgeSE2PointXY(py::module& m) {
 
 
 
-    py::class_<EdgeSE2PointXYOffset, BaseBinaryEdge<2, Vector2D, VertexSE2, VertexPointXY>>(m, "EdgeSE2PointXYOffset")
+    py::class_<EdgeSE2PointXYOffset, BaseBinaryEdge<2, Vector2, VertexSE2, VertexPointXY>>(m, "EdgeSE2PointXYOffset")
         .def(py::init<>())
         .def("compute_error", &EdgeSE2PointXYOffset::computeError)
         .def("set_measurement", &EdgeSE2PointXYOffset::setMeasurement)

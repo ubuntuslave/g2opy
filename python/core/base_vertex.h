@@ -57,11 +57,11 @@ void templatedBaseVertex(py::module & m, const std::string & suffix) {
 void declareBaseVertex(py::module & m) {
     // common types
     templatedBaseVertex<1, double>(m, "_1_double");
-    templatedBaseVertex<2, Vector2D>(m, "_2_Vector2D");
-    templatedBaseVertex<3, Vector3D>(m, "_3_Vector3D");
+    templatedBaseVertex<2, Vector2>(m, "_2_Vector2D");
+    templatedBaseVertex<3, Vector3>(m, "_3_Vector3D");
     templatedBaseVertex<4, Eigen::Matrix<double, 5, 1, Eigen::ColMajor>>(m, "_4_Vector5d");   // sba
 
-    templatedBaseVertex<6, Isometry3D>(m, "_6_Isometry3D");   // slam3d
+    templatedBaseVertex<6, Isometry3>(m, "_6_Isometry3D");   // slam3d
 }
 
 }  // end namespace g2o

@@ -80,14 +80,14 @@ void templatedDynamicBaseEdge(py::module & m, const std::string & suffix) {
 void declareBaseEdge(py::module & m) {
     // common types
     templatedBaseEdge<1, double>(m, "_1_double");
-    templatedBaseEdge<2, Vector2D>(m, "_2_Vector2D");
-    templatedBaseEdge<3, Vector3D>(m, "_3_Vector3D");
-    templatedBaseEdge<4, Vector4D>(m, "_4_Vector4D");
+    templatedBaseEdge<2, Vector2>(m, "_2_Vector2D");
+    templatedBaseEdge<3, Vector3>(m, "_3_Vector3D");
+    templatedBaseEdge<4, Vector4>(m, "_4_Vector4D");
     
-    templatedBaseEdge<6, Isometry3D>(m, "_6_Isometry3D");
+    templatedBaseEdge<6, Isometry3>(m, "_6_Isometry3D");
     
 
-    templatedDynamicBaseEdge<VectorXD>(m, "_VectorXD");
+    templatedDynamicBaseEdge<VectorX>(m, "_VectorXD");
 }
 
 

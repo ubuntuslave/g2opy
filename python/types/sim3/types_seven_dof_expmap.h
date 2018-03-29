@@ -37,10 +37,10 @@ void declareTypesSevenDofExpmap(py::module & m) {
 
 
 
-    templatedBaseBinaryEdge<2, Vector2D, VertexSBAPointXYZ, VertexSim3Expmap>(m, 
+    templatedBaseBinaryEdge<2, Vector2, VertexSBAPointXYZ, VertexSim3Expmap>(m,
         "_2_Vector2D_VertexSBAPointXYZ_VertexSim3Expmap");
 
-    py::class_<EdgeSim3ProjectXYZ, BaseBinaryEdge<2, Vector2D, VertexSBAPointXYZ, VertexSim3Expmap>>(m, 
+    py::class_<EdgeSim3ProjectXYZ, BaseBinaryEdge<2, Vector2, VertexSBAPointXYZ, VertexSim3Expmap>>(m,
         "EdgeSim3ProjectXYZ")
         .def(py::init<>())
         .def("compute_error", &EdgeSim3ProjectXYZ::computeError)
@@ -48,7 +48,7 @@ void declareTypesSevenDofExpmap(py::module & m) {
 
 
 
-    py::class_<EdgeInverseSim3ProjectXYZ, BaseBinaryEdge<2, Vector2D, VertexSBAPointXYZ, VertexSim3Expmap>>(m, 
+    py::class_<EdgeInverseSim3ProjectXYZ, BaseBinaryEdge<2, Vector2, VertexSBAPointXYZ, VertexSim3Expmap>>(m,
         "EdgeInverseSim3ProjectXYZ")
         .def(py::init<>())
         .def("compute_error", &EdgeInverseSim3ProjectXYZ::computeError)

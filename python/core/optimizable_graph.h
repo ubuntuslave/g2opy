@@ -145,6 +145,7 @@ void declareOptimizableGraph(py::module & m) {
                     "g"_a,
                     py::keep_alive<1, 2>());                                                                        // OptimizableGraph* -> void
         
+        /* CARLOS: OLD:
         cls.def("add_vertex", (bool (CLS::*) (OptimizableGraph::Vertex*, HyperGraph::Data*)) &CLS::addVertex,
 					"v"_a, "user_data"_a,
 					py::keep_alive<1, 2>(),
@@ -152,6 +153,7 @@ void declareOptimizableGraph(py::module & m) {
         cls.def("add_vertex", (bool (CLS::*) (OptimizableGraph::Vertex*)) &CLS::addVertex,
 					"v"_a,
 					py::keep_alive<1, 2>());
+	*/
         cls.def("add_vertex", (bool (CLS::*) (HyperGraph::Vertex*, HyperGraph::Data*)) &CLS::addVertex,
 					"v"_a, "user_data"_a,
 					py::keep_alive<1, 2>(),
@@ -159,10 +161,11 @@ void declareOptimizableGraph(py::module & m) {
         cls.def("add_vertex", (bool (CLS::*) (HyperGraph::Vertex*)) &CLS::addVertex,
 					"v"_a,
 					py::keep_alive<1, 2>());
-
+        /*
         cls.def("add_edge", (bool (CLS::*) (OptimizableGraph::Edge*)) &CLS::addEdge,
 					"e"_a,
 					py::keep_alive<1, 2>());
+        */
         cls.def("add_edge", (bool (CLS::*) (HyperGraph::Edge*)) &CLS::addEdge,
 					"e"_a,
 					py::keep_alive<1, 2>());

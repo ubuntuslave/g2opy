@@ -14,8 +14,8 @@ namespace g2o {
 
 void declareEdgeSE3PointXYZ(py::module & m) {
 
-    templatedBaseBinaryEdge<3, Vector3D, VertexSE3, VertexPointXYZ>(m, "_3_Vector3D_VertexSE3_VertexPointXYZ");
-    py::class_<EdgeSE3PointXYZ, BaseBinaryEdge<3, Vector3D, VertexSE3, VertexPointXYZ>>(m, "EdgeSE3PointXYZ")
+    templatedBaseBinaryEdge<3, Vector3, VertexSE3, VertexPointXYZ>(m, "_3_Vector3D_VertexSE3_VertexPointXYZ");
+    py::class_<EdgeSE3PointXYZ, BaseBinaryEdge<3, Vector3, VertexSE3, VertexPointXYZ>>(m, "EdgeSE3PointXYZ")
         .def(py::init<>())
 
         .def("compute_error", &EdgeSE3PointXYZ::computeError)
@@ -33,7 +33,7 @@ void declareEdgeSE3PointXYZ(py::module & m) {
     // class EdgeSE3PointXYZDrawAction: public DrawAction
 
 
-    py::class_<EdgeSE3PointXYZDepth, BaseBinaryEdge<3, Vector3D, VertexSE3, VertexPointXYZ>>(m, "EdgeSE3PointXYZDepth")
+    py::class_<EdgeSE3PointXYZDepth, BaseBinaryEdge<3, Vector3, VertexSE3, VertexPointXYZ>>(m, "EdgeSE3PointXYZDepth")
         .def(py::init<>())
 
         .def("compute_error", &EdgeSE3PointXYZDepth::computeError)
@@ -49,7 +49,7 @@ void declareEdgeSE3PointXYZ(py::module & m) {
 
 
 
-    py::class_<EdgeSE3PointXYZDisparity, BaseBinaryEdge<3, Vector3D, VertexSE3, VertexPointXYZ>>(m, "EdgeSE3PointXYZDisparity")
+    py::class_<EdgeSE3PointXYZDisparity, BaseBinaryEdge<3, Vector3, VertexSE3, VertexPointXYZ>>(m, "EdgeSE3PointXYZDisparity")
         .def(py::init<>())
 
         .def("compute_error", &EdgeSE3PointXYZDisparity::computeError)

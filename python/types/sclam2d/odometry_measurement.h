@@ -29,7 +29,7 @@ void declareOdometryMeasurement(py::module& m) {
     py::class_<MotionMeasurement>(m, "MotionMeasurement")
         .def(py::init<>())
         .def(py::init<double, double, double, double>(), "x"_a, "y"_a, "theta"_a, "dt"_a)
-        .def(py::init<const Vector3D&, double>(), "m"_a, "dt"_a)
+        .def(py::init<const Vector3&, double>(), "m"_a, "dt"_a)
 
         .def("x", &MotionMeasurement::x)
         .def("set_x", &MotionMeasurement::setX)

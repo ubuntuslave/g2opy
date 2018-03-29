@@ -103,9 +103,9 @@ void declareTypesICP(py::module & m) {
 
         //.def("map_point", &VertexSCam::mapPoint,
         //        "res"_a, "pt3"_a,
-        //        "calculate stereo projection")   // (Vector3D&, const Vector3D&) -> 
-        .def("map_point", [](VertexSCam& cam, const Vector3D& point) {
-                Vector3D res;
+        //        "calculate stereo projection")   // (Vector3&, const Vector3&) ->
+        .def("map_point", [](VertexSCam& cam, const Vector3& point) {
+                Vector3 res;
                 cam.mapPoint(res, point);
                 return res;
             })
@@ -133,8 +133,8 @@ void declareTypesICP(py::module & m) {
 
 
 
-    templatedBaseBinaryEdge<3, Vector3D, VertexSBAPointXYZ, VertexSCam>(m, "_3_Vector3D_VertexSBAPointXYZ_VertexSCam");
-    py::class_<Edge_XYZ_VSC, BaseBinaryEdge<3, Vector3D, VertexSBAPointXYZ, VertexSCam>>(m, "Edge_XYZ_VSC")
+    templatedBaseBinaryEdge<3, Vector3, VertexSBAPointXYZ, VertexSCam>(m, "_3_Vector3D_VertexSBAPointXYZ_VertexSCam");
+    py::class_<Edge_XYZ_VSC, BaseBinaryEdge<3, Vector3, VertexSBAPointXYZ, VertexSCam>>(m, "Edge_XYZ_VSC")
         .def(py::init<>())
         .def("compute_error", &Edge_XYZ_VSC::computeError)
         

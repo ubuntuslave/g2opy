@@ -43,7 +43,7 @@ void declareEdgeSE2(py::module& m) {
 
 
 
-    py::class_<EdgeSE2LotsOfXY, BaseMultiEdge<-1,VectorXD>>(m, "EdgeSE2LotsOfXY")
+    py::class_<EdgeSE2LotsOfXY, BaseMultiEdge<-1,VectorX>>(m, "EdgeSE2LotsOfXY")
         .def(py::init<>())
         .def("set_dimension", &EdgeSE2LotsOfXY::setDimension)
         .def("set_size", &EdgeSE2LotsOfXY::setSize)
@@ -85,7 +85,7 @@ void declareEdgeSE2(py::module& m) {
 
 
 
-    py::class_<EdgeSE2TwoPointsXY, BaseMultiEdge<4, Vector4D>>(m, "EdgeSE2TwoPointsXY")
+    py::class_<EdgeSE2TwoPointsXY, BaseMultiEdge<4, Vector4>>(m, "EdgeSE2TwoPointsXY")
         .def(py::init<>())
         .def("compute_error", &EdgeSE2TwoPointsXY::computeError)
         .def("set_measurement_from_state", &EdgeSE2TwoPointsXY::setMeasurementFromState)
@@ -95,8 +95,8 @@ void declareEdgeSE2(py::module& m) {
 
 
 
-    templatedBaseUnaryEdge<2, Vector2D, VertexSE2>(m, "_2_Vector2D_VertexSE2");
-    py::class_<EdgeSE2XYPrior, BaseUnaryEdge<2, Vector2D, VertexSE2>>(m, "EdgeSE2XYPrior")
+    templatedBaseUnaryEdge<2, Vector2, VertexSE2>(m, "_2_Vector2D_VertexSE2");
+    py::class_<EdgeSE2XYPrior, BaseUnaryEdge<2, Vector2, VertexSE2>>(m, "EdgeSE2XYPrior")
         .def(py::init<>())
         .def("compute_error", &EdgeSE2XYPrior::computeError)
         .def("set_measurement_data", &EdgeSE2XYPrior::setMeasurementData)

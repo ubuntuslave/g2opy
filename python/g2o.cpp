@@ -48,10 +48,10 @@ PYBIND11_MODULE(g2o, m) {
     declareOptimizableGraph(m);
     declareSparseOptimizer(m);
 
-    delcareHyperGraphAction(m);
-    delcareHyperDijkstra(m);
-    delcareEstimatePropagator(m);
-    delcareSparseBlockMatrix(m);
+    declareHyperGraphAction(m);
+    declareHyperDijkstra(m);
+    declareEstimatePropagator(m);
+    declareSparseBlockMatrix(m);
 
     declareEigenTypes(m);
     declareParameter(m);

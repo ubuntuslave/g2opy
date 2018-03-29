@@ -56,14 +56,14 @@ void templatedDynamicBaseMultiEdge(py::module & m, const std::string & suffix) {
 
 void declareBaseMultiEdge(py::module & m) {
     // common types
-    templatedBaseMultiEdge<2, Vector2D>(m, "_2_Vector2D");
-    templatedBaseMultiEdge<3, Vector3D>(m, "_3_Vector3D");
-    templatedBaseMultiEdge<4, Vector4D>(m, "_4_Vector4D");
+    templatedBaseMultiEdge<2, Vector2>(m, "_2_Vector2D");
+    templatedBaseMultiEdge<3, Vector3>(m, "_3_Vector3D");
+    templatedBaseMultiEdge<4, Vector4>(m, "_4_Vector4D");
     
 
-    //templatedDynamicBaseMultiEdge<Vector2D>(m, "_Vector2D");
-    //templatedDynamicBaseMultiEdge<Vector3D>(m, "_Vector3D");
-    templatedDynamicBaseMultiEdge<VectorXD>(m, "_VectorXD");
+    //templatedDynamicBaseMultiEdge<Vector2>(m, "_Vector2D");
+    //templatedDynamicBaseMultiEdge<Vector3>(m, "_Vector3D");
+    templatedDynamicBaseMultiEdge<VectorX>(m, "_VectorXD");
 
 }
 

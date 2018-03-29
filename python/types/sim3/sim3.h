@@ -21,7 +21,7 @@ void declareSim3(py::module & m) {
         .def(py::init<>())
         .def(py::init<const Eigen::Quaterniond&, const Eigen::Vector3d&, double>())
         .def(py::init<const Eigen::Matrix3d&, const Eigen::Vector3d&, double>())
-        .def(py::init<const Vector7d&>())
+        .def(py::init<const Vector7&>())
 
         .def("map", &Sim3::map)
         .def("log", &Sim3::log)

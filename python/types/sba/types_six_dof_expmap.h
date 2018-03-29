@@ -20,7 +20,7 @@ void declareTypesSixDofExpmap(py::module & m) {
 
     py::class_<CameraParameters, Parameter>(m, "CameraParameters")
         .def(py::init<>())
-        .def(py::init<double, const Vector2D &, double>(),
+        .def(py::init<double, const Vector2 &, double>(),
                 "focal_length"_a, "principle_point"_a, "baseline"_a)
 
         .def("cam_map", &CameraParameters::cam_map,
@@ -54,15 +54,15 @@ void declareTypesSixDofExpmap(py::module & m) {
     ;
 
 
-    templatedBaseBinaryEdge<2, Vector2D, VertexSBAPointXYZ, VertexSE3Expmap>(m, "_2_Vector2D_VertexSBAPointXYZ_VertexSE3Expmap");
-    py::class_<EdgeProjectXYZ2UV, BaseBinaryEdge<2, Vector2D, VertexSBAPointXYZ, VertexSE3Expmap>>(m, "EdgeProjectXYZ2UV")
+    templatedBaseBinaryEdge<2, Vector2, VertexSBAPointXYZ, VertexSE3Expmap>(m, "_2_Vector2D_VertexSBAPointXYZ_VertexSE3Expmap");
+    py::class_<EdgeProjectXYZ2UV, BaseBinaryEdge<2, Vector2, VertexSBAPointXYZ, VertexSE3Expmap>>(m, "EdgeProjectXYZ2UV")
         .def(py::init<>())
         .def("compute_error", &EdgeProjectXYZ2UV::computeError)
         .def("linearize_oplus", &EdgeProjectXYZ2UV::linearizeOplus)
     ;
 
 
-    py::class_<EdgeProjectPSI2UV, BaseMultiEdge<2, Vector2D>>(m, "EdgeProjectPSI2UV")
+    py::class_<EdgeProjectPSI2UV, BaseMultiEdge<2, Vector2>>(m, "EdgeProjectPSI2UV")
         .def(py::init())
         .def("compute_error", &EdgeProjectPSI2UV::computeError)
         .def("linearize_oplus", &EdgeProjectPSI2UV::linearizeOplus)
@@ -70,15 +70,15 @@ void declareTypesSixDofExpmap(py::module & m) {
 
 
     //Stereo Observations
-    templatedBaseBinaryEdge<3, Vector3D, VertexSBAPointXYZ, VertexSE3Expmap>(m, "_3_Vector3D_VertexSBAPointXYZ_VertexSE3Expmap");
-    py::class_<EdgeProjectXYZ2UVU, BaseBinaryEdge<3, Vector3D, VertexSBAPointXYZ, VertexSE3Expmap>>(m, "EdgeProjectXYZ2UVU")
+    templatedBaseBinaryEdge<3, Vector3, VertexSBAPointXYZ, VertexSE3Expmap>(m, "_3_Vector3D_VertexSBAPointXYZ_VertexSE3Expmap");
+    py::class_<EdgeProjectXYZ2UVU, BaseBinaryEdge<3, Vector3, VertexSBAPointXYZ, VertexSE3Expmap>>(m, "EdgeProjectXYZ2UVU")
         .def(py::init<>())
         .def("compute_error", &EdgeProjectXYZ2UVU::computeError)
     ;
 
 
     // Projection using focal_length in x and y directions
-    py::class_<EdgeSE3ProjectXYZ, BaseBinaryEdge<2, Vector2D, VertexSBAPointXYZ, VertexSE3Expmap>>(m, "EdgeSE3ProjectXYZ")
+    py::class_<EdgeSE3ProjectXYZ, BaseBinaryEdge<2, Vector2, VertexSBAPointXYZ, VertexSE3Expmap>>(m, "EdgeSE3ProjectXYZ")
         .def(py::init<>())
         .def("compute_error", &EdgeSE3ProjectXYZ::computeError)
         .def("is_depth_positive", &EdgeSE3ProjectXYZ::isDepthPositive)
@@ -88,8 +88,8 @@ void declareTypesSixDofExpmap(py::module & m) {
 
 
     // Edge to optimize only the camera pose
-    templatedBaseUnaryEdge<2, Vector2D, VertexSE3Expmap>(m, "BaseUnaryEdge_2_Vector2D_VertexSE3Expmap");
-    py::class_<EdgeSE3ProjectXYZOnlyPose, BaseUnaryEdge<2, Vector2D, VertexSE3Expmap>>(m, "EdgeSE3ProjectXYZOnlyPose")
+    templatedBaseUnaryEdge<2, Vector2, VertexSE3Expmap>(m, "BaseUnaryEdge_2_Vector2D_VertexSE3Expmap");
+    py::class_<EdgeSE3ProjectXYZOnlyPose, BaseUnaryEdge<2, Vector2, VertexSE3Expmap>>(m, "EdgeSE3ProjectXYZOnlyPose")
         .def(py::init<>())
         .def("compute_error", &EdgeSE3ProjectXYZOnlyPose::computeError)
         .def("is_depth_positive", &EdgeSE3ProjectXYZOnlyPose::isDepthPositive)
@@ -99,7 +99,7 @@ void declareTypesSixDofExpmap(py::module & m) {
 
 
     // Projection using focal_length in x and y directions stereo
-    py::class_<EdgeStereoSE3ProjectXYZ, BaseBinaryEdge<3, Vector3D, VertexSBAPointXYZ, VertexSE3Expmap>>(m, "EdgeStereoSE3ProjectXYZ")
+    py::class_<EdgeStereoSE3ProjectXYZ, BaseBinaryEdge<3, Vector3, VertexSBAPointXYZ, VertexSE3Expmap>>(m, "EdgeStereoSE3ProjectXYZ")
         .def(py::init<>())
         .def("compute_error", &EdgeStereoSE3ProjectXYZ::computeError)
         .def("is_depth_positive", &EdgeStereoSE3ProjectXYZ::isDepthPositive)
@@ -109,8 +109,8 @@ void declareTypesSixDofExpmap(py::module & m) {
 
 
     // Edge to optimize only the camera pose stereo
-    templatedBaseUnaryEdge<3, Vector3D, VertexSE3Expmap>(m, "BaseUnaryEdge_3_Vector3D_VertexSE3Expmap");
-    py::class_<EdgeStereoSE3ProjectXYZOnlyPose, BaseUnaryEdge<3, Vector3D, VertexSE3Expmap>>(m, "EdgeStereoSE3ProjectXYZOnlyPose")
+    templatedBaseUnaryEdge<3, Vector3, VertexSE3Expmap>(m, "BaseUnaryEdge_3_Vector3D_VertexSE3Expmap");
+    py::class_<EdgeStereoSE3ProjectXYZOnlyPose, BaseUnaryEdge<3, Vector3, VertexSE3Expmap>>(m, "EdgeStereoSE3ProjectXYZOnlyPose")
         .def(py::init<>())
         .def("compute_error", &EdgeStereoSE3ProjectXYZOnlyPose::computeError)
         .def("is_depth_positive", &EdgeStereoSE3ProjectXYZOnlyPose::isDepthPositive)
@@ -119,12 +119,12 @@ void declareTypesSixDofExpmap(py::module & m) {
     ;
 
 
-    // class G2O_TYPES_SBA_API EdgeProjectPSI2UV : public g2o::BaseMultiEdge<2, Vector2D>
-    // class G2O_TYPES_SBA_API EdgeProjectXYZ2UVU : public BaseBinaryEdge<3, Vector3D, VertexSBAPointXYZ, VertexSE3Expmap>
+    // class G2O_TYPES_SBA_API EdgeProjectPSI2UV : public g2o::BaseMultiEdge<2, Vector2>
+    // class G2O_TYPES_SBA_API EdgeProjectXYZ2UVU : public BaseBinaryEdge<3, Vector3, VertexSBAPointXYZ, VertexSE3Expmap>
     // class EdgeSE3ProjectXYZ : public BaseBinaryEdge<2, Vector2D, VertexSBAPointXYZ, VertexSE3Expmap>
-    // class EdgeSE3ProjectXYZOnlyPose : public BaseUnaryEdge<2, Vector2D, VertexSE3Expmap>
-    // class EdgeStereoSE3ProjectXYZ : public BaseBinaryEdge<3, Vector3D, VertexSBAPointXYZ, VertexSE3Expmap>
-    // class EdgeStereoSE3ProjectXYZOnlyPose : public BaseUnaryEdge<3, Vector3D, VertexSE3Expmap>
+    // class EdgeSE3ProjectXYZOnlyPose : public BaseUnaryEdge<2, Vector2, VertexSE3Expmap>
+    // class EdgeStereoSE3ProjectXYZ : public BaseBinaryEdge<3, Vector3, VertexSBAPointXYZ, VertexSE3Expmap>
+    // class EdgeStereoSE3ProjectXYZOnlyPose : public BaseUnaryEdge<3, Vector3, VertexSE3Expmap>
 
 }
 

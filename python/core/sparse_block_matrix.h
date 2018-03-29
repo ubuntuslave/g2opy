@@ -10,7 +10,7 @@ using namespace pybind11::literals;
 namespace g2o {
 
 namespace {
-    template<class MatrixType=MatrixXD>
+    template<class MatrixType=MatrixX>
     void templatedSparseBlockMatrix(py::module& m, const std::string& suffix) {
         using CLS = SparseBlockMatrix<MatrixType>;
 
@@ -30,9 +30,9 @@ namespace {
 
 
 
-void delcareSparseBlockMatrix(py::module& m) {
+void declareSparseBlockMatrix(py::module& m) {
 
-    templatedSparseBlockMatrix<MatrixXD>(m, "X");
+    templatedSparseBlockMatrix<MatrixX>(m, "X");
 
 }
 

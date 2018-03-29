@@ -17,13 +17,13 @@ void declareSE3Quat(py::module & m) {
 
     py::class_<SE3Quat>(m, "SE3Quat")
         .def(py::init<>())
-        .def(py::init<const Matrix3D&, const Vector3D&>(),
+        .def(py::init<const Matrix3&, const Vector3&>(),
                 "R"_a, "t"_a)
-        .def(py::init<const Eigen::Quaterniond&, const Vector3D&>(),
+        .def(py::init<const Eigen::Quaterniond&, const Vector3&>(),
                 "q"_a, "t"_a)
-        .def(py::init<const Vector6d&>(),
+        .def(py::init<const Vector6&>(),
                 "v"_a)
-        .def(py::init<const Vector7d&>(),
+        .def(py::init<const Vector7&>(),
                 "v"_a)
 
         .def("translation", &SE3Quat::translation)
@@ -38,7 +38,7 @@ void declareSE3Quat(py::module & m) {
 
         .def(py::self * py::self)
         .def(py::self *= py::self)
-        .def(py::self * Vector3D())
+        //.def(py::self * ()) // Commented out by CARLOS
 
         .def("inverse", &SE3Quat::inverse)
         .def("__getitem__", &SE3Quat::operator[],
@@ -54,7 +54,7 @@ void declareSE3Quat(py::module & m) {
 
         .def("log", &SE3Quat::log)   // -> Vector6d
         .def("map", &SE3Quat::map,
-                "xyz"_a)   // Vector3D -> vector3D
+                "xyz"_a)   //  -> vector3D
         .def_static("exp", &SE3Quat::exp,
                 "update"_a)   // Vector6d -> SE3Quat
 
@@ -65,7 +65,7 @@ void declareSE3Quat(py::module & m) {
 
         // operator Isometry3D() const
         .def("Isometry3d", [](const SE3Quat& p) {
-                Isometry3D result = (Isometry3D) p.rotation();
+                Isometry3 result = (Isometry3) p.rotation();
                 result.translation() = p.translation();
                 return result;
         })

@@ -15,8 +15,8 @@ namespace g2o {
 
 void declareEdgeSE3(py::module & m) {
 
-    templatedBaseBinaryEdge<6, Isometry3D, VertexSE3, VertexSE3>(m, "_6_Isometry3D_VertexSE3_VertexSE3");
-    py::class_<EdgeSE3, BaseBinaryEdge<6, Isometry3D, VertexSE3, VertexSE3>>(m, "EdgeSE3")
+    templatedBaseBinaryEdge<6, Isometry3, VertexSE3, VertexSE3>(m, "_6_Isometry3D_VertexSE3_VertexSE3");
+    py::class_<EdgeSE3, BaseBinaryEdge<6, Isometry3, VertexSE3, VertexSE3>>(m, "EdgeSE3")
         .def(py::init<>())
 
         .def("compute_error", &EdgeSE3::computeError)
@@ -34,7 +34,7 @@ void declareEdgeSE3(py::module & m) {
     // class G2O_TYPES_SLAM3D_API EdgeSE3DrawAction: public DrawAction
 
 
-    py::class_<EdgeSE3LotsOfXYZ, BaseMultiEdge<-1, VectorXD>>(m, "EdgeSE3LotsOfXYZ")
+    py::class_<EdgeSE3LotsOfXYZ, BaseMultiEdge<-1, VectorX>>(m, "EdgeSE3LotsOfXYZ")
         .def(py::init<>())
 
         .def("set_dimension", &EdgeSE3LotsOfXYZ::setDimension)
@@ -59,8 +59,8 @@ void declareEdgeSE3(py::module & m) {
 
 
 
-    templatedBaseUnaryEdge<6, Isometry3D, VertexSE3>(m, "_6_Isometry3D_VertexSE3");
-    py::class_<EdgeSE3Prior, BaseUnaryEdge<6, Isometry3D, VertexSE3>>(m, "EdgeSE3Prior")
+    templatedBaseUnaryEdge<6, Isometry3, VertexSE3>(m, "_6_Isometry3D_VertexSE3");
+    py::class_<EdgeSE3Prior, BaseUnaryEdge<6, Isometry3, VertexSE3>>(m, "EdgeSE3Prior")
         .def(py::init<>())
     
         .def("compute_error", &EdgeSE3Prior::computeError)

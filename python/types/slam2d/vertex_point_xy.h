@@ -12,7 +12,7 @@ namespace g2o {
 
 void declareVertexPointXY(py::module & m) {
 
-    py::class_<VertexPointXY, BaseVertex<2, Vector2D>>(m, "VertexPointXY")
+    py::class_<VertexPointXY, BaseVertex<2, Vector2>>(m, "VertexPointXY")
         .def(py::init<>())
         .def("set_to_origin_impl", &VertexPointXY::setToOriginImpl)
         .def("oplus_impl", &VertexPointXY::oplusImpl)

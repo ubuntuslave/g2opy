@@ -37,7 +37,7 @@ void declareTypesSBA(py::module & m) {
     ;
 
 
-    py::class_<VertexSBAPointXYZ, BaseVertex<3, Vector3D>>(m, "VertexSBAPointXYZ")
+    py::class_<VertexSBAPointXYZ, BaseVertex<3, Vector3>>(m, "VertexSBAPointXYZ")
         .def(py::init<>())
         .def("set_to_origin_impl", &VertexSBAPointXYZ::setToOriginImpl)
         .def("oplus_impl", &VertexSBAPointXYZ::oplusImpl)    // double* -> void
@@ -45,8 +45,8 @@ void declareTypesSBA(py::module & m) {
 
     // monocular projection
     // first two args are the measurement type, second two the connection classes
-    templatedBaseBinaryEdge<2, Vector2D, VertexSBAPointXYZ, VertexCam>(m, "_2_Vector2D_VertexSBAPointXYZ_VertexCam");
-    py::class_<EdgeProjectP2MC, BaseBinaryEdge<2, Vector2D, VertexSBAPointXYZ, VertexCam>>(m, "EdgeProjectP2MC")
+    templatedBaseBinaryEdge<2, Vector2, VertexSBAPointXYZ, VertexCam>(m, "_2_Vector2D_VertexSBAPointXYZ_VertexCam");
+    py::class_<EdgeProjectP2MC, BaseBinaryEdge<2, Vector2, VertexSBAPointXYZ, VertexCam>>(m, "EdgeProjectP2MC")
         .def(py::init<>())
         .def("compute_error", &EdgeProjectP2MC::computeError)    // () -> void
         .def("linearize_oplus", &EdgeProjectP2MC::linearizeOplus)
@@ -55,8 +55,8 @@ void declareTypesSBA(py::module & m) {
 
     // stereo projection
     // first two args are the measurement type, second two the connection classes
-    templatedBaseBinaryEdge<3, Vector3D, VertexSBAPointXYZ, VertexCam>(m, "_3_Vector3D_VertexSBAPointXYZ_VertexCam");
-    py::class_<EdgeProjectP2SC, BaseBinaryEdge<3, Vector3D, VertexSBAPointXYZ, VertexCam>>(m, "EdgeProjectP2SC")
+    templatedBaseBinaryEdge<3, Vector3, VertexSBAPointXYZ, VertexCam>(m, "_3_Vector3D_VertexSBAPointXYZ_VertexCam");
+    py::class_<EdgeProjectP2SC, BaseBinaryEdge<3, Vector3, VertexSBAPointXYZ, VertexCam>>(m, "EdgeProjectP2SC")
         .def(py::init<>())
         .def("compute_error", &EdgeProjectP2SC::computeError)    // () -> void
         .def("linearize_oplus", &EdgeProjectP2SC::linearizeOplus)
@@ -65,7 +65,7 @@ void declareTypesSBA(py::module & m) {
 
     // monocular projection with parameter calibration
     // first arg are the measurement type, second the connection classes
-    py::class_<EdgeProjectP2MC_Intrinsics, BaseMultiEdge<2, Vector2D>>(m, "EdgeProjectP2MC_Intrinsics")
+    py::class_<EdgeProjectP2MC_Intrinsics, BaseMultiEdge<2, Vector2>>(m, "EdgeProjectP2MC_Intrinsics")
         .def(py::init<>())
         .def("compute_error", &EdgeProjectP2MC_Intrinsics::computeError)    // () -> void
         .def("linearize_oplus", &EdgeProjectP2MC_Intrinsics::linearizeOplus)
